@@ -1,0 +1,86 @@
+.boardTaskInputWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  z-index: 20;
+}
+
+.boardTaskInputBtn {
+  padding: 8px 24px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  border: none;
+  outline: unset;
+  border-radius: 3px;
+}
+
+.boardTaskCancelBtn {
+  background: #f00;
+}
+.boardTaskSaveBtn {
+  background: #0079bf;
+}
+
+.boardTaskInputBtnWrap {
+  margin-top: 15px;
+  display: flex;
+  column-gap: 10px;  
+}
+
+.boardTaskInput {
+  width: 288px;
+  height: 100px;
+  outline: unset;
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  resize: none;
+  padding: 5px;
+}
+
+@keyframes optionsAnimate {
+  0%{
+    opacity: 0;
+    right: 0;
+  }
+  50% {
+    opacity: 0;
+    right: -35%;
+  }
+  80% {
+    opacity: 1;
+    clip-path: polygon(100% 0, 100% 20%, 0 20%, 0 0);
+  }
+  100% {
+    right: -62%;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+
+.boardTaskOptions {
+  position: absolute;
+  display: flex;
+  row-gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: optionsAnimate .2s linear forwards;
+  z-index: 0; 
+
+}
+
+.boardTaskOption {
+  border: none;
+  outline: unset;
+  background: rgba(0,0,0,.5);
+  padding: 6px 12px 6px 8px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.boardTaskOption:hover {
+  background: rgba(0,0,0,.8);
+  transform: translateX(10px);
+}

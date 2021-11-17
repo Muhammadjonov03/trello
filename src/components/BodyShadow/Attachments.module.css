@@ -1,0 +1,260 @@
+.attachmentsWrap {
+  position: absolute;
+  width: 303px;
+  background: #ebecf0;
+  z-index: 10;
+  border-radius: 3px;
+  padding-bottom: 12px;
+  right: -110%;
+  max-height: 95vh;
+}
+
+.attachmentsHeader {
+  margin: 0 12px;
+  padding: 0 32px;
+  position: relative;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #5e6c84;
+  border-bottom: 1px solid rgba(9,30,66,0.13);
+}
+
+.attachmentsBack,
+.attachmentsHeaderExit {
+  position: absolute;
+  border: none;
+  outline: unset;
+  background: transparent;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5e6c84;
+}
+
+.attachmentsBack:hover,
+.attachmentsHeaderExit:hover {
+  color: #172b4d;;
+}
+
+.attachmentsBack {
+  left: 0;
+}
+
+.attachmentsHeaderExit {
+  right: 0;
+}
+
+.attachmentsBody {
+  margin: 0 12px;
+  overflow-y: auto;
+}
+
+.fixedAttachmnetsList::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.fixedAttachmnetsList::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.fixedAttachmnetsList::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.fixedAttachmnetsList::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+.fixedAttachmnetsList::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+.fixedAttachmnetsList::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.fixedAttachmnetsList::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+.fixedAttachmnetsList::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+.fixedAttachmnetsList::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+.fixedAttachmentsInput {
+  width: 100%;
+  border: 2px solid #dfe1e6;
+  padding: 8px 12px;
+  background: #fafbfc;
+  color: #172b4d;
+}
+
+.fixedAttachmentsInput:hover {
+  background: #ebecf0;
+}
+
+.fixedAttachmentsInput::placeholder {
+  color: #172b4d;
+}
+
+.fixedAttachment {
+  display: flex;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  column-gap: 5px;
+}
+
+.fixedAttachmnetsList {
+  row-gap: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  padding-bottom: 5px;
+  overflow-y: auto;
+}
+
+.fixedAttachmentAdd {
+  padding: 6px 12px;
+  border-radius: 3px;
+  min-height: 32px;
+  border: none;
+  outline: unset;
+  flex-grow: 1;
+  position: relative;
+}
+
+.fixedAttachmentAddBg {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+}
+
+.fixedAttachmentAdd:hover .fixedAttachmentAddBg{
+  left: -3%;
+}
+
+.fixedAttachmentAddBg::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+  border-radius: 3px;
+}
+
+.fixedAttachmentChange {
+  border: none;
+  outline: unset;
+  background: transparent;
+  color: #42526e;
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 3px;
+
+}
+
+.fixedAttachmentChange:hover {
+  background: #dfe1e6;
+}
+
+.fixedAttachmentsCrBtn {
+  border-radius: 3px;
+  width: 100%;
+  margin-top: 15px;
+  padding: 6px 12px;
+  border: none;
+  outline: unset;
+  background: transparent;
+  color: #5e6c84;
+}
+
+.fixedAttachmentsCrBtn:hover {
+  background: rgba(9,30,66, .4);
+
+}
+
+.changedAttachmentColorWrap {
+  position: relative;
+  width: 48px;
+  height: 32px;
+  border-radius: 3px;
+}
+
+.changedAttachmentColorWrap span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 12px;
+  color: #fff;
+}
+
+.changedAttachmentColor {
+  border: none;
+  outline: unset;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.changedAttachmentColorsList {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 8px;
+  width: 100%;
+}
+
+.changedAttachmentInput {
+  padding: 8px 12px;
+  width: 100%;
+  border: none;
+  outline: unset;
+  background: #fafbfc;
+  border: 2px solid #dfe1e6;
+  border-radius: 3px;
+}
+.changedAttachmentInput:focus {
+  box-shadow: inset 0 0 0 2px #0079bf;
+}
+.changedAttachmentInput:hover {
+  background: #ebecf0;
+}
+
+.changedAttachmentTitle, .changedAttachmentColorsTitle {
+  font-size: 12px;
+}
+
+.changedAttachmentBtns {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.changedAttachmentSave, .changedAttachmentDelete {
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 24px;
+}
+
+.changedAttachmentSave {
+  background: #0079bf;
+}
+
+.changedAttachmentDelete {
+  background: #b04632;
+}
