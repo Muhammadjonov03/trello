@@ -138,6 +138,17 @@
   border-radius: 3px;
 }
 
+.fixedAttachmentTick {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  width: 15px;
+  height: 15px;
+  font-size: 12px;
+  right: 15px;
+}
+
 .fixedAttachmentAdd:hover .fixedAttachmentAddBg{
   left: -3%;
 }

@@ -23,7 +23,7 @@ const BoardAttachments = (props) => {
         <button className={style.attachmentsHeaderExit} onClick={onAttachmentsClosed}><i className="fas fa-times"></i></button>
       </div>
       <div className={style.attachmentsBody}>
-      {!props.isChangeAttachment  && ( !props.isCreateAttachment && <FixedAttachments fixedAttachments={props.fixedAttachments} toggleCrTaskAttachment={props.toggleCrTaskAttachment}
+      {!props.isChangeAttachment  && ( !props.isCreateAttachment && <FixedAttachments taskDetails={props.taskDetails} createTaskAttachment={props.createTaskAttachment} fixedAttachments={props.fixedAttachments} toggleCrTaskAttachment={props.toggleCrTaskAttachment}
       toggleChangeTaskAttachment={props.toggleChangeTaskAttachment} />)}
       {props.isCreateAttachment && <CreateTaskAttachment colors={props.colors} createTaskAttachment={props.createTaskAttachment} taskDetails={props.taskDetails}
       toggleCrTaskAttachment={props.toggleCrTaskAttachment}/>}

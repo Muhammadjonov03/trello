@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './Attachments.module.css';
-const FixedAttachment = (props) => {
+const FixedAttachment = ({taskDetails, ...props}) => {
+  const [attachmentAdded, setAttachmentAdded] = useState(false)
+  const onAttachmentClicked = () => {
+    props.createAttachment(taskDetails.boardId, taskDetails.taskId, props.atach.name, props.atach.title)
+    setAttachmentAdded(true)
+  }
   return (
     <li className={style.fixedAttachment}>
-            <button className={style.fixedAttachmentAdd} style={{backgroundColor: props.atach.color}}>
+            <button className={style.fixedAttachmentAdd} style={{backgroundColor: props.atach.color}} onClick={onAttachmentClicked}>
             {props.atach.title}
+            {attachmentAdded && <span className={style.fixedAttachmentTick}><i className="fas fa-check"></i></span>}
             <span style={{backgroundColor: props.atach.color}} className={style.fixedAttachmentAddBg} ></span>
             </button>
             <button className={style.fixedAttachmentChange} onClick={() => props.toggleChangeTaskAttachment(true, props.atach.id)}>

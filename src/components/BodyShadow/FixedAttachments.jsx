@@ -11,7 +11,7 @@ const FixedAttachments = (props) => {
         <p className={style.fixedAttachmentsBodyTitle}>Attachments</p>
         <ul className={style.fixedAttachmnetsList}>
           {
-            props.fixedAttachments.map(at => <FixedAttachment key={at.id} atach={at} toggleChangeTaskAttachment={props.toggleChangeTaskAttachment}/>)
+            props.fixedAttachments.map(at => <FixedAttachment createAttachment={props.createTaskAttachment} taskDetails={props.taskDetails} key={at.id} atach={at} toggleChangeTaskAttachment={props.toggleChangeTaskAttachment}/>)
           }
         </ul>
         <button className={style.fixedAttachmentsCrBtn} onClick={() => props.toggleCrTaskAttachment(true)}>Create Attachment</button>
