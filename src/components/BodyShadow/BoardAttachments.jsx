@@ -2,6 +2,7 @@ import React from 'react'
 import style from './Attachments.module.css';
 import FixedAttachments from './FixedAttachments';
 import ChangeAttachment from './ChangeAttachment';
+import CreateTaskAttachment from './CreateTaskAttachment';
 const BoardAttachments = (props) => {
   const onAttachmentsClosed = () => {
     props.toggleAddTaskAttachment(false)
@@ -22,9 +23,11 @@ const BoardAttachments = (props) => {
         <button className={style.attachmentsHeaderExit} onClick={onAttachmentsClosed}><i className="fas fa-times"></i></button>
       </div>
       <div className={style.attachmentsBody}>
-      {!props.isChangeAttachment && <FixedAttachments fixedAttachments={props.fixedAttachments} toggleCrTaskAttachment={props.toggleCrTaskAttachment}
-      toggleChangeTaskAttachment={props.toggleChangeTaskAttachment} />}
-      {props.isChangeAttachment && <ChangeAttachment changeAttachment={props.changeTaskAttachment}
+      {!props.isChangeAttachment  && ( !props.isCreateAttachment && <FixedAttachments fixedAttachments={props.fixedAttachments} toggleCrTaskAttachment={props.toggleCrTaskAttachment}
+      toggleChangeTaskAttachment={props.toggleChangeTaskAttachment} />)}
+      {props.isCreateAttachment && <CreateTaskAttachment colors={props.colors} createTaskAttachment={props.createTaskAttachment} taskDetails={props.taskDetails}
+      toggleCrTaskAttachment={props.toggleCrTaskAttachment}/>}
+      {props.isChangeAttachment && <ChangeAttachment changeAttachment={props.changeAttachment}
       attach={props.fixedAttachments.find(at => at.id === props.currentAttachment)} colors={props.colors} toggleChangeTaskAttachment={props.toggleChangeTaskAttachment}/>}
       </div>
     </div>

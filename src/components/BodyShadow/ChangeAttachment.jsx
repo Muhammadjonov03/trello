@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import style from './Attachments.module.css'
-const ChangeAttachment = (props) => {
-  console.log(props);
-  const [colorName, setColorName] = useState(props.attach.name)
-  const [title, setTitle] = useState(props.attach.title)
+const ChangeAttachment = ({attach, ...props}) => {
+  const [colorName, setColorName] = useState(attach.name)
+  const [title, setTitle] = useState(attach.title)
   const onSubmit = () => {
-    props.changeAttachment(props.attach.id, title, colorName)
-    props.toggleChangeTaskAttachment(false)
+    props.changeAttachment(attach.id, colorName, title)
   }
   return (
     <div>

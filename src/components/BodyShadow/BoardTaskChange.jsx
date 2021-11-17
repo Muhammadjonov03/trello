@@ -9,20 +9,22 @@ function BoardTaskChange({onEditModeCLose, taskChangeDetails,...props}) {
   }
   const onSave = () => {
     props.setTaskChange(taskChangeDetails.taskId, taskChangeDetails.boardId, value)
-    onEditModeCLose()
+    onEditModeCLose(false)
   }
   
   const onCancel = () => onEditModeCLose()
   return (
         <div className={style.boardTaskInputWrap} style={{top: taskChangeDetails.y, left: taskChangeDetails.x}}>
-          <textarea
-          value={value}
-          onChange={onChangeHandler}
-          type="text"
-          autoFocus={true}
-          onFocus={e => e.target.select()}
-          className={style.boardTaskInput}
-          />
+          <div>
+            <textarea
+            value={value}
+            onChange={onChangeHandler}
+            type="text"
+            autoFocus={true}
+            onFocus={e => e.target.select()}
+            className={style.boardTaskInput}
+            />
+          </div>
           <div className={style.boardTaskInputBtnWrap}>
             <button
             onClick={onSave}
@@ -37,8 +39,8 @@ function BoardTaskChange({onEditModeCLose, taskChangeDetails,...props}) {
           {props.addTaskAttachment && <BoardAttachments isCreateAttachment={props.isCreateAttachment} fixedAttachments={props.fixedAttachments}
           toggleAddTaskAttachment={props.toggleAddTaskAttachment} toggleCrTaskAttachment={props.toggleCrTaskAttachment} 
           toggleChangeTaskAttachment={props.toggleChangeTaskAttachment} isChangeAttachment={props.isChangeAttachment} currentAttachment={props.currentAttachment}
-          changeTaskAttachment={props.changeTaskAttachment} colors={props.colors}/>}
-        </div>
+          colors={props.colors} changeAttachment={props.changeAttachment} createTaskAttachment={props.createTaskAttachment} taskDetails={props.taskDetails}/>}
+        </div> 
   )
 }
 

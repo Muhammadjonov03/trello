@@ -643,3 +643,38 @@
 .boardoptsSortBtn:hover {
   background: #ebecf0;
 }
+
+.attachmentsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2px;
+}
+
+.attachment {
+  width: 30px;
+  text-align: center;
+  padding: 2px 4px;
+  font-size: 0px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@keyframes activeAttachment {
+  0%{
+  }
+  50% {
+    height: 15px;
+  }
+  80% {
+    width: auto;
+  }
+  100% {
+    font-size: 10px;
+    width: auto;
+  }
+}
+
+.attachmentActive {
+  animation: activeAttachment 0.3s ease-in-out forwards;
+}

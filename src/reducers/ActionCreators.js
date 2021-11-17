@@ -18,7 +18,9 @@ import {
   TOGGLE_ADD_TASK_ATACHMENT,
   TOGGLE_CREATE_TASK_ATACHMENT,
   TOGGLE_CHANGE_ATTACHMENT,
-  CHANGE_ATTACHMENT
+  CHANGE_ATTACHMENT,
+  TOGGLE_CREATE_ATTACHEMENT,
+  CREATE_TASK_ATTACHMENT
 } from './types';
 
 export const onBoardHeaderInputChange = (title, boardId) => ({
@@ -115,7 +117,9 @@ export const toggleChangeTaskAttachment = (isActive, atachId) => ({
   type: TOGGLE_CHANGE_ATTACHMENT,
   isActive, atachId
 })
-export const changeTaskAttachment = (title, id, color) => ({
-  type: CHANGE_ATTACHMENT,
-  title, id, color
+export const changeAttachment =(atId, color, title) => ({
+  type: CHANGE_ATTACHMENT, atId, color, title
+})
+export const createTaskAttachment =(bId, tId, color, title) => ({
+  type: CREATE_TASK_ATTACHMENT, tId, bId, color, title
 })

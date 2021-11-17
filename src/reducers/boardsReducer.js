@@ -19,6 +19,7 @@ import {
   TOGGLE_CREATE_TASK_ATACHMENT,
   TOGGLE_CHANGE_ATTACHMENT,
   CHANGE_ATTACHMENT,
+  CREATE_TASK_ATTACHMENT,
 } from './types';
 
 const initialState = {
@@ -390,26 +391,49 @@ const boardsReducer = (state = initialState, action) => {
                                   ...state,
                                   addTaskAttachment: action.isActive
                                 }
-                              case TOGGLE_CREATE_TASK_ATACHMENT:
-                                return {
-                                  ...state,
-                                  isCreateAttachment: action.isActive
-                                }   
-                              case TOGGLE_CHANGE_ATTACHMENT:
-                                return {
-                                  ...state,
-                                  isChangeAttachment: action.isActive,
-                                  currentAttachmentId: action.atachId
-                                }
-                              case CHANGE_ATTACHMENT:{
-                                const chosenColor = state.colors.find(c => c.name === action.color).color
-                                return{
-                                  ...state,
-                                  fixedAttachments: state.fixedAttachments.map(at => at.id === action.id ? {...at, color: chosenColor, title: action.title,} : at)
-                                }
-                              }
-                              default:
-                                return state
+                                case TOGGLE_CREATE_TASK_ATACHMENT:
+                                  return {
+                                    ...state,
+                                    isCreateAttachment: action.isActive
+                                  }
+                                  case TOGGLE_CHANGE_ATTACHMENT:
+                                    return {
+                                      ...state,
+                                      isChangeAttachment: action.isActive,
+                                        currentAttachmentId: action.atachId
+                                    }
+                                    case CHANGE_ATTACHMENT: {
+                                      const chosenColor = state.colors.find(c => c.name === action.color)
+                                      return {
+                                        ...state,
+                                        fixedAttachments: state.fixedAttachments.map(at => at.id === action.atId ? {
+                                          ...at,
+                                          color: chosenColor.color,
+                                          title: action.title,
+                                          name: chosenColor.name
+                                        } : at)
+                                      }
+                                    }
+                                    case CREATE_TASK_ATTACHMENT:{
+
+                                    const chosenColor = state.colors.find(c => c.name === action.color)
+                                      return {
+                                        ...state,
+                                        boards: state.boards.map(b => b.id === action.bId ? {
+                                          ...b,
+                                          tasks: b.tasks.map(t => t.id === action.tId ? {
+                                            ...t,
+                                            attachments: [...t.attachments, {
+                                              title: action.title,
+                                              color: {...chosenColor},
+                                              id: t.attachments.length + 1,
+                                              }]
+                                          } : t)
+                                        } : b),
+                                        fixedAttachments: [...state.fixedAttachments, {color: chosenColor.color, name: chosenColor.name, title: action.title, id: state.fixedAttachments.length + 1}]
+                                      }}
+                                      default:
+                                        return state
   }
 }
 
