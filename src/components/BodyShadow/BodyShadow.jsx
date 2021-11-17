@@ -10,7 +10,6 @@ function BodyShadow({taskChangeDetails,...props}) {
   }
   return (
     <div className={style.bodyShadowWrap} onClick={onShadowClick}>
-      {/* <input className={style.taskChangeInput} type="text" width="150" height="150" style={{top: taskChangeDetails.y, left: taskChangeDetails.x}}/> */}
       <BoardTaskChange addTaskAttachment={props.addTaskAttachment} taskChangeDetails={taskChangeDetails} 
       setTaskChange={props.setTaskChange} onEditModeCLose={onEditModeCLose} isCreateAttachment={props.isCreateAttachment}
       fixedAttachments={props.fixedAttachments} toggleAddTaskAttachment={props.toggleAddTaskAttachment} 
