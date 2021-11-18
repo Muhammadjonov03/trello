@@ -20,6 +20,8 @@ import {
   TOGGLE_CHANGE_ATTACHMENT,
   CHANGE_ATTACHMENT,
   CREATE_TASK_ATTACHMENT,
+  DELETE_FIXED_ATTTACHMENT,
+  ADD_USER_TO_TASK,
 } from './types';
 
 const initialState = {
@@ -184,7 +186,13 @@ const initialState = {
     taskId: null,
     boardId: null,
     title: ''
-  }
+  },
+  workers:[
+    {id: 1, name: 'Mashxurbek'},
+    {id: 2, name: 'Abduvali'},
+    {id: 3, name: 'Temur'},
+    {id: 4, name: 'Baxodir'}
+  ]
 }
 
 const getTime = () => new Date().getTime()
@@ -432,6 +440,14 @@ const boardsReducer = (state = initialState, action) => {
                                         } : b),
                                         fixedAttachments: [...state.fixedAttachments, {color: chosenColor.color, name: chosenColor.name, title: action.title, id: state.fixedAttachments.length + 1}]
                                       }}
+                                      
+                                      // case DELETE_FIXED_ATTTACHMENT:
+                                      //   return {
+                                      //     ...state,
+                                      //     fixedAttachments: state.fixedAttachments.filter(at => at.id !== action.atId),
+                                      //     boards: state.boards.map(b => b.id === action.bId ? {...b, })
+                                      //   }
+                                      
                                       default:
                                         return state
   }

@@ -39,7 +39,9 @@ function BoardTaskChange({onEditModeCLose, taskChangeDetails,...props}) {
           {props.addTaskAttachment && <BoardAttachments isCreateAttachment={props.isCreateAttachment} fixedAttachments={props.fixedAttachments}
           toggleAddTaskAttachment={props.toggleAddTaskAttachment} toggleCrTaskAttachment={props.toggleCrTaskAttachment} 
           toggleChangeTaskAttachment={props.toggleChangeTaskAttachment} isChangeAttachment={props.isChangeAttachment} currentAttachment={props.currentAttachment}
-          colors={props.colors} changeAttachment={props.changeAttachment} createTaskAttachment={props.createTaskAttachment} taskDetails={props.taskDetails}/>}
+          colors={props.colors} changeAttachment={props.changeAttachment} createTaskAttachment={props.createTaskAttachment} taskDetails={props.taskDetails}
+          deleteFixedAttachment={props.deleteFixedAttachment}
+          />}
         </div> 
   )
 }

@@ -12,7 +12,8 @@ function BodyShadow({taskChangeDetails,...props}) {
       setTaskChange={props.setTaskChange} onEditModeCLose={props.setTaskChangeActive} isCreateAttachment={props.isCreateAttachment}
       fixedAttachments={props.fixedAttachments} toggleAddTaskAttachment={props.toggleAddTaskAttachment} 
       toggleCrTaskAttachment={props.toggleCrTaskAttachment} toggleChangeTaskAttachment={props.toggleChangeTaskAttachment} isChangeAttachment={props.isChangeAttachment}
-      currentAttachment={props.currentAttachment} colors={props.colors} changeAttachment={props.changeAttachment} createTaskAttachment={props.createTaskAttachment}/>
+      currentAttachment={props.currentAttachment} colors={props.colors} changeAttachment={props.changeAttachment} createTaskAttachment={props.createTaskAttachment}
+      deleteFixedAttachment={props.deleteFixedAttachment}/>
       <button className={style.closeEditMode} onClick={onEditModeCLose}><i className="fas fa-times"></i></button>
     </div>
   )

@@ -7,33 +7,7 @@ import BoardTasksList from './BoardTasksList';
 
 function BoardItem({boardData, ...props}) {
   const [optsShown, setOptsShown] = useState(false)
-//   const [draggedBoard, setDraggedBoard] = useState(null)
-  
-//   const dragStartHandler = (e) => {
-//     setTimeout(() => {
-//       e.target.classList.add(style.hide)
-//     }, 0);
-//     e.target.classList.add(style.hold)
-//     setDraggedBoard(e.currentTarget.id)
-//   }
-//   const dragEndHandler = (e) => {
-//     e.preventDefault()
-//     e.target.classList.remove(style.hide, style.hold)
-// }
-//   const dragLeaveHandler = (e) => {
-
-//   }
-
-//   const dragOverHandler = (e, boardId) => {
-    
-//   }
-
-//   const dropHandler = (e) => {
-//     e.preventDefault()
-//     props.onBoardDragOver(draggedBoard, e.currentTarget.id)
-//   }
-
-return (
+  return (
     <div id={boardData.id} className={style.boardWrapper}>
       <BoardHeader title={boardData.title} headerChange={props.headerChange} id={boardData.id} showOpts={setOptsShown}/>
       <div className={style.boardBody}>

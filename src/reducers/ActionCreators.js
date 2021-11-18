@@ -20,7 +20,8 @@ import {
   TOGGLE_CHANGE_ATTACHMENT,
   CHANGE_ATTACHMENT,
   TOGGLE_CREATE_ATTACHEMENT,
-  CREATE_TASK_ATTACHMENT
+  CREATE_TASK_ATTACHMENT,
+  DELETE_FIXED_ATTTACHMENT
 } from './types';
 
 export const onBoardHeaderInputChange = (title, boardId) => ({
@@ -123,3 +124,4 @@ export const changeAttachment =(atId, color, title) => ({
 export const createTaskAttachment =(bId, tId, color, title) => ({
   type: CREATE_TASK_ATTACHMENT, tId, bId, color, title
 })
+export const deleteFixedAttachment = (atId) => ({type:DELETE_FIXED_ATTTACHMENT, atId})

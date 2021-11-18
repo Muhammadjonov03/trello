@@ -1,6 +1,7 @@
 import { compose } from "redux";
 import { setTaskChangeActive, setTaskChange, toggleAddTaskAttachment,
-  toggleCrTaskAttachment, toggleChangeTaskAttachment, changeAttachment, createTaskAttachment} from "./reducers/ActionCreators"
+  toggleCrTaskAttachment, toggleChangeTaskAttachment, changeAttachment, 
+  createTaskAttachment, deleteFixedAttachment} from "./reducers/ActionCreators"
 import App from './App';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router';
@@ -19,4 +20,5 @@ const mapStateToProps = (state) => {
 }
 
 export default   compose(withRouter,connect(mapStateToProps, {setTaskChangeActive,setTaskChange, toggleAddTaskAttachment, 
-                                            toggleCrTaskAttachment, toggleChangeTaskAttachment, changeAttachment, createTaskAttachment}))(App)
+                                            toggleCrTaskAttachment, toggleChangeTaskAttachment, changeAttachment, createTaskAttachment,
+                                            deleteFixedAttachment}))(App)
