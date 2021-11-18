@@ -1,0 +1,122 @@
+.boardCopyHeader {
+  min-width: 216px;
+  margin: 0 12px;
+  padding: 0 32px;
+  text-align: center;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #6b778c;
+  position: relative;
+  cursor: pointer;
+}
+
+.boardCopyHeaderTitle {
+  line-height: 40px;
+  color: #6b778c;
+
+}
+
+
+.boardCopyBackBtn, .boardCopyExitBtn {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: none;
+  outline: unset;
+  background: transparent;
+  font-size: 14px;
+  color: #6b778c;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.boardCopyBackBtn:hover, .boardCopyExitBtn:hover {
+  color: #42526e;
+}
+
+
+.boardCopyBackBtn {
+  left: 5px;
+}
+
+.boardCopyExitBtn {
+  right: 5px;
+}
+
+.boardCopyForm {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 12px 0 12px;
+}
+
+.boardCopyInput {
+  width: 100%;
+  height: 72px;
+  background: #fafbfc;
+  transition: .1s linear;
+  resize: none;
+  outline: unset;
+  padding: 8px 12px;
+}
+
+
+.boardCopyInput::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.boardCopyInput::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.boardCopyInput::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.boardCopyInput::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+.boardCopyInput::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+.boardCopyInput::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.boardCopyInput::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+.boardCopyInput::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+.boardCopyInput::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+.boardCopyInput:hover {
+  background: #ebecf0;
+}
+
+.boardCopyInputLabel {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.boardCopyBtn {
+  margin-top: 15px;
+  font-size: 14px;
+  padding: 6px 24px;
+  background: #0079bf;
+  color: #fff;
+  border: none;
+  outline: unset;
+  border-radius: 3px;
+  transition: .2s linear;
+  cursor: pointer;
+}
+
+.boardCopyBtn:hover {
+  background: #026aa7;
+}

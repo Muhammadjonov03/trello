@@ -1,0 +1,49 @@
+.boardOptsSortHeader {
+  margin: 0 12px;
+  border-bottom: 1px solid #676767;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.boardOptsSortTitle {
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.boardOptsSortBack, .boardOptsSortExit {
+  position: absolute;
+  top: 50%;
+  border: none;
+  outline: unset;
+  background: transparent;
+  color: #676767;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.boardOptsSortExit {
+  right: 16px;
+}
+.boardOptsSortBack:hover, .boardOptsSortExit:hover {
+  color: #42526e;
+}
+
+.boardOptsSortBtnWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.boardOptsSortBtn {
+  padding: 4px 12px;
+  text-align-last: left;
+  color: #172b4d;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  outline: unset;
+}
+
+.boardOptsSortBtn:hover {
+  background: #ebecf0;
+}

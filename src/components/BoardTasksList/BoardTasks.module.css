@@ -1,0 +1,77 @@
+.boardTask {
+  position: relative;
+  border-radius: 4px;
+  background: #fff;
+  margin: 10px 0;
+  padding: 6px 8px 2px;
+  box-shadow: 0 1px 0 #091e4240;
+  min-height: 29px;
+}
+
+.boardTaskTitle {
+  overflow-wrap: break-word;
+  font-size: 14px;
+}
+
+.boardTaskEditBtn {
+  position: absolute;
+  top: 2px;
+  height: 24px;
+  width: 24px;
+  right: 2px;
+  color: #42526e;
+  display: none;
+  border: none;
+  outline: unset;
+  font-style: 12px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.1);
+  }
+
+.boardTask:hover {
+  background: #f4f5f7;
+}
+
+.boardTask:hover .boardTaskEditBtn {
+  display: block;
+}
+
+.boardTaskEditBtn:hover {
+  background: #ebecf0;
+}
+
+.attachmentsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2px;
+}
+
+.attachment {
+  width: 30px;
+  text-align: center;
+  padding: 2px 4px;
+  font-size: 0px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@keyframes activeAttachment {
+  0%{
+  }
+  50% {
+    height: 15px;
+  }
+  80% {
+    width: auto;
+  }
+  100% {
+    font-size: 10px;
+    min-width: 50px;
+    min-height: 15px;
+  }
+}
+
+.attachmentActive {
+  animation: activeAttachment 0.3s ease-in-out forwards;
+}

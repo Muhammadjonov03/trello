@@ -1,0 +1,20 @@
+.newBoardBtn {
+  padding: 6px 8px;
+  min-width: 272px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  background: rgba(0,0,0, .5);
+  border: none;
+  outline: unset;
+  border-radius: 3px;
+  transition: 0.1s linear;
+}
+
+.newBoardBtn span {
+  margin-right: 5px;  
+}
+
+.newBoardBtn:hover {
+  background: rgba(0,0,0, .4);
+}

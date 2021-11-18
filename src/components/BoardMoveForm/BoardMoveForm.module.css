@@ -1,0 +1,68 @@
+.boardMoveWrap {
+  width: 100%;
+  padding: 12px 12px 0 12px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.boardMoveHeader {
+  padding: 0 30px;
+  position: relative;
+  border-bottom: 1px solid rgba(9,30,66, 0.13);
+  text-align: center;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.boardMoveOrderWrap, .boardMoveFolderWrap {
+  position: relative;
+}
+
+.boardMoveFolder, .boardMoveOrder {
+  outline: unset;
+  border: none;
+  border-radius: 3px;
+  background: #ebecf0;
+  padding: 25px 8px 8px 8px;
+  appearance: none;
+  width: 100%;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.boardMoveFolder option, .boardMoveOrder option {
+  font-size: 12px;
+}
+
+
+.boardMoveFolder:hover, .boardMoveOrder:hover {
+  background: #e1e1e1;
+}
+
+.boardMoveSelectName {
+  position: absolute;
+  font-size: 12px;
+  left: 8px;
+  top: 8px;
+}
+
+.boardMoveBackBtn, .boardMoveExitBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  outline: unset;
+  background: transparent;
+  color: #6b778c;
+}
+.boardMoveBackBtn:hover, .boardMoveExitBtn:hover {
+  color: #172b4d;
+}
+
+.boardMoveBackBtn {
+  left: 10px;
+}
+.boardMoveExitBtn {
+  right: 10px;
+}
