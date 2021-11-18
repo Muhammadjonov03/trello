@@ -1,8 +1,9 @@
 import React from 'react'
-import BoardItem from './SubComponents/BoardItem'
+// import BoardItem from './SubComponents/BoardItem'
 import style from './Boards.module.css'
-import AddBoardInitializer from './SubComponents/AddBoard';
-import AddBoardForm from './SubComponents/AddBoardForm';
+import AddBoardInitializer from './../AddBoardInitializer/AddBoardInitializer';
+import AddBoardForm from './../AddBoardForm/AddBoardForm';
+import Board from './../Board/Board';
 const Boards = (props) => {
   const addBoard = ({newBoardTitle}) => {
     props.addBoard(newBoardTitle)
@@ -12,7 +13,7 @@ const Boards = (props) => {
     <div className={style.boardsWrap}>
       {
         props.boards.map(board => (
-          <BoardItem 
+          <Board 
           key={board.id}
           boardData={board} 
           taskChangeActive={props.isTaskChangeActive}

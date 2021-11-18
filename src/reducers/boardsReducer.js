@@ -31,7 +31,6 @@ const initialState = {
       title: 'Start',
       tasks: [],
       isNewTaskActive: false,
-
     },
     {
       id: 2,
