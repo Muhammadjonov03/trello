@@ -21,7 +21,8 @@ import {
   CREATE_TASK_ATTACHMENT,
   DELETE_FIXED_ATTTACHMENT,
   ADD_USER_TO_TASK,
-  TOGGLE_ADD_WORKERS_STATUS
+  TOGGLE_ADD_WORKERS_STATUS,
+  MOVE_BOARD_ON_DRAG
 } from './types';
 
 export const onBoardHeaderInputChange = (title, boardId) => ({
@@ -141,4 +142,9 @@ export const toggleAddWorkersStatus = (isActive) => ({
 export const deleteFixedAttachment = (atId) => ({
   type: DELETE_FIXED_ATTTACHMENT,
   atId
+})
+export const moveBoardOnDrag = (draggedBoard, dropArea) => ({
+  type: MOVE_BOARD_ON_DRAG,
+  draggedBoard,
+  dropArea
 })

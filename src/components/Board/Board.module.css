@@ -50,3 +50,11 @@
 .boardBody::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+.boardDragged {
+  background: #ebecf0;
+}
+
+.hideBoard {
+display: none;
+}

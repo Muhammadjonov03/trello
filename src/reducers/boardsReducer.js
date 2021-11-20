@@ -14,7 +14,7 @@ import {
   BOARD_MOVE_STATUS,
   BOARD_ITEMS_SORT,
   BOARD_ITEMS_SORT_STATUS,
-  ON_BOARD_DRAG_OVER,
+  ON_BOARD_DRAG,
   TOGGLE_ADD_TASK_ATACHMENT,
   TOGGLE_CREATE_TASK_ATACHMENT,
   TOGGLE_CHANGE_ATTACHMENT,
@@ -22,6 +22,7 @@ import {
   CREATE_TASK_ATTACHMENT,
   ADD_USER_TO_TASK,
   TOGGLE_ADD_WORKERS_STATUS,
+  MOVE_BOARD_ON_DRAG,
 } from './types';
 
 const initialState = {
@@ -391,10 +392,10 @@ const boardsReducer = (state = initialState, action) => {
                                   } : b)
                                 }
                               }
-                              case ON_BOARD_DRAG_OVER: {
+                              case ON_BOARD_DRAG: {
                                 const movingBoard = state.boards.find(b => b.id === action.draggedBoardId)
                                 const newOrderBoard = state.boards.find(b => b.id === action.movingBoardId)
-                                const newBoardId = state.boards.map(b => {
+                                const newBoardOrder = state.boards.map(b => {
                                   if (b.id === newOrderBoard.id) {
                                     return {
                                       ...b,
@@ -410,7 +411,7 @@ const boardsReducer = (state = initialState, action) => {
                                 })
                                 return {
                                   ...state,
-                                  boards: newBoardId.sort((a, b) => a.order > b.order ? 1 : -1)
+                                  boards: newBoardOrder.sort((a, b) => a.order > b.order ? 1 : -1)
                                 }
                               }
                               case TOGGLE_ADD_TASK_ATACHMENT:
@@ -522,6 +523,28 @@ const boardsReducer = (state = initialState, action) => {
                                               boards: w.boards.filter(b => b.id !== action.boardId)
                                             } : w)
                                           }
+                                        }
+                                      }
+                                      case MOVE_BOARD_ON_DRAG: {
+                                        const movingBoard = state.boards.find(b => b.id === action.draggedBoard)
+                                        const droppingArea = state.boards.find(b => b.id === action.dropArea)
+                                        const reorderedBoards = state.boards.map(b => {
+                                          if(b.id === movingBoard.id){
+                                            return {
+                                              ...b,
+                                              order: droppingArea.order
+                                            }
+                                          } else if (b.id === droppingArea.id) {
+                                            return {
+                                              ...b,
+                                              order: movingBoard.order
+                                            }
+                                          }
+                                          return b
+                                        })
+                                        return {
+                                          ...state, 
+                                          boards: reorderedBoards.sort((a,b) => a.order > b.order ? 1 : -1)
                                         }
                                       }
                                       default:

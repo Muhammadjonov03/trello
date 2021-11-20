@@ -9,9 +9,15 @@ import BoardOpts from './../BoardOpts/BoardOpts';
 
 const Board = ({boardData, ...props}) => {
   const [optsShown, setOptsShown] = useState(false)
-  // debugger
   return (
-      <div id={boardData.id} className={style.boardWrapper}>
+      <div id={boardData.id} className={style.boardWrapper} draggable={true} onDragStart={e => {
+        e.currentTarget.classList.add(style.boardDragged)
+        setTimeout(() => {
+          e.target.classList.add(style.hideBoard)
+        }, 0);
+        props.setDraggedBoard(e.target.id - 0)
+        }
+        } onDragEnd={e => e.currentTarget.className = style.boardWrapper}>
       <BoardHeader title={boardData.title} headerChange={props.headerChange} id={boardData.id} showOpts={setOptsShown}/>
       <div className={style.boardBody}>
       <BoardTasksList
