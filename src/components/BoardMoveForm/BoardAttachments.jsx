@@ -1,9 +1,9 @@
 import React from 'react'
 import style from './Attachments.module.css';
-import FixedAttachments from './FixedAttachments';
-import ChangeAttachment from './ChangeAttachment';
-import CreateTaskAttachment from './CreateTaskAttachment';
-const BoardAttachments = (props) => {
+import FixedAttachments from '../BodyShadow/FixedAttachments';
+import ChangeAttachment from '../BodyShadow/ChangeAttachment';
+import CreateTaskAttachment from '../BodyShadow/CreateTaskAttachment';
+const BoardMoveForm = (props) => {
   const onAttachmentsClosed = () => {
     props.toggleAddTaskAttachment(false)
   }
@@ -36,4 +36,4 @@ const BoardAttachments = (props) => {
   )
 }
 
-export default BoardAttachments
+export default BoardMoveForm

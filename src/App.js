@@ -9,7 +9,8 @@ function App(props) {
       setTaskChangeActive={props.setTaskChangeActive} setTaskChange={props.setTaskChange} isCreateAttachment={props.isCreateAttachment} 
       fixedAttachments={props.fixedAttachments} toggleAddTaskAttachment={props.toggleAddTaskAttachment} toggleCrTaskAttachment={props.toggleCrTaskAttachment}
       toggleChangeTaskAttachment={props.toggleChangeTaskAttachment} isChangeAttachment={props.isChangeAttachment} currentAttachment={props.currentAttachment}
-      colors={props.colors} changeAttachment={props.changeAttachment} createTaskAttachment={props.createTaskAttachment} deleteFixedAttachment={props.deleteFixedAttachment}/>}
+      colors={props.colors} changeAttachment={props.changeAttachment} createTaskAttachment={props.createTaskAttachment} deleteFixedAttachment={props.deleteFixedAttachment}
+      addWorkersStatus={props.addWorkersStatus} workers={props.workers} toggleAddWorkersStatus={props.toggleAddWorkersStatus} addWorkerToTask={props.addWorkerToTask}/>}
       <BoardsContainer/>
     </div>
   );

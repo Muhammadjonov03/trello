@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import style from './Attachments.module.css'
-const CreateTaskAttachment = ({taskDetails,...props}) => {
-  const [title, setTitle] = useState('')
-  const [colorName, setColorName] = useState()
+import style from './ChangeAttachment.module.css'
+const ChangeAttachment = ({attach, ...props}) => {
+  const [colorName, setColorName] = useState(attach.name)
+  const [title, setTitle] = useState(attach.title)
   const onSubmit = () => {
-    props.createTaskAttachment(taskDetails.boardId, taskDetails.taskId, colorName, title)
-    props.toggleCrTaskAttachment(false)
+    props.changeAttachment(attach.id, colorName, title)
+  }
+  const onDelete = () => {
+    alert('Deleted')
   }
   return (
     <div>
@@ -26,11 +28,11 @@ const CreateTaskAttachment = ({taskDetails,...props}) => {
         </ul>
       </div>
       <div className={style.changedAttachmentBtns}>
-        <button className={style.changedAttachmentSave} onClick={onSubmit}>Add</button>
-
+        <button className={style.changedAttachmentSave} onClick={onSubmit}>Save</button>
+        <button className={style.changedAttachmentDelete} onClick={onDelete}>Delete</button>
       </div>
     </div>
   )
 }
 
-export default CreateTaskAttachment
+export default ChangeAttachment

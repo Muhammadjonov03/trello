@@ -1,0 +1,50 @@
+.attachmentsWrap {
+  position: absolute;
+  width: 303px;
+  background: #ebecf0;
+  z-index: 10;
+  border-radius: 3px;
+  padding-bottom: 12px;
+  right: -110%;
+  max-height: 95vh;
+}
+
+.attachmentsHeader {
+  margin: 0 12px;
+  padding: 0 32px;
+  position: relative;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #5e6c84;
+  border-bottom: 1px solid rgba(9,30,66,0.13);
+}
+
+.attachmentsBack,
+.attachmentsHeaderExit {
+  position: absolute;
+  border: none;
+  outline: unset;
+  background: transparent;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5e6c84;
+}
+
+.attachmentsBack:hover,
+.attachmentsHeaderExit:hover {
+  color: #172b4d;;
+}
+
+.attachmentsBack {
+  left: 0;
+}
+
+.attachmentsHeaderExit {
+  right: 0;
+}
+
+.attachmentsBody {
+  margin: 0 12px;
+  overflow-y: auto;
+}

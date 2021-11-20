@@ -1,0 +1,51 @@
+.workerWrap {
+  width: 100%;
+  position: relative;
+}
+
+.workerBtn {
+  display: flex;
+  padding: 10px 12px;
+  width: 100%;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: unset;
+  background: transparent;
+}
+
+.workerBtn:hover {
+  background: rgba(9,30,66,0.04);
+}
+
+.workerImgWrap {
+  width: 32px;
+  height: 32px;
+  overflow-wrap: unset;
+  flex-shrink: 0; 
+  background: #ff991f;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.workerImgWrap span{
+  font-size: 14px;
+  text-align: center;
+  font-weight: 400;
+  line-height: 32px;
+  color: #172b4d;
+  flex: 0;
+  display: block;
+}
+
+.workerTick {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #172b4d;
+  right: 10px;
+  font-size: 12px;
+}

@@ -1,0 +1,69 @@
+.fixedAttachment {
+  display: flex;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  column-gap: 5px;
+}
+
+.fixedAttachmentAdd {
+  padding: 6px 12px;
+  border-radius: 3px;
+  min-height: 32px;
+  border: none;
+  outline: unset;
+  flex-grow: 1;
+  position: relative;
+}
+
+.fixedAttachmentAddBg {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+}
+
+.fixedAttachmentTick {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  width: 15px;
+  height: 15px;
+  font-size: 12px;
+  right: 15px;
+}
+
+.fixedAttachmentAdd:hover .fixedAttachmentAddBg{
+  left: -3%;
+}
+
+.fixedAttachmentAddBg::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+  border-radius: 3px;
+}
+
+.fixedAttachmentChange {
+  border: none;
+  outline: unset;
+  background: transparent;
+  color: #42526e;
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 3px;
+
+}
+
+.fixedAttachmentChange:hover {
+  background: #dfe1e6;
+}

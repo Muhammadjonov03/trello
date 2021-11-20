@@ -1,6 +1,6 @@
 import React from 'react'
-import style from './Attachments.module.css'
-import FixedAttachment from './FixedAttachment';
+import FixedAttachment from '../FixedAttachment/FixedAttachment'
+import style from './FixedAttachments.module.css'
 const FixedAttachments = (props) => {
   return (
     <div className={style.fixedAttachmentsWrap}>

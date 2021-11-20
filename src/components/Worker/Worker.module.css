@@ -1,0 +1,14 @@
+.taskWorker {
+  background: #ff991f;
+  color: #172b4d;
+  padding: 4px;
+  border-radius: 50%;
+  /* width: 50px; */
+  font-size: 14px;
+  letter-spacing: -1px;
+}
+
+.taskWorkerWrap {
+  margin: 5px;
+  cursor: pointer;
+}

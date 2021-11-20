@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import style from './TaskChange.module.css'
-import BoardTaskOpts from './BoardTaskOpts';
-import BoardAttachments from './BoardAttachments';
-function BoardTaskChange({onEditModeCLose, taskChangeDetails,...props}) {
+import React, { useState } from 'react';
+import BoardtaskOpts from '../BoardTaskOpts/BoardtaskOpts';
+import style from './BoardTaskChange.module.css';
+import BoardAttachments from './../BoardAttachments/BoardAttachments';
+import AddWorkers from '../AddWorkers/AddWorkers';
+const BoardTaskChange = ({onEditModeCLose, taskChangeDetails,...props}) => {
   const [value, setValue] = useState(taskChangeDetails.title)
   const onChangeHandler = e => {
     setValue(e.target.value)
@@ -35,13 +36,17 @@ function BoardTaskChange({onEditModeCLose, taskChangeDetails,...props}) {
             className={`${style.boardTaskInputBtn} ${style.boardTaskCancelBtn}`}
             >Cancel</button>
           </div>
-          <BoardTaskOpts toggleAddTaskAttachment={props.toggleAddTaskAttachment}/>
+          <BoardtaskOpts toggleAddTaskAttachment={props.toggleAddTaskAttachment} toggleAddWorkersStatus={props.toggleAddWorkersStatus}/>
           {props.addTaskAttachment && <BoardAttachments isCreateAttachment={props.isCreateAttachment} fixedAttachments={props.fixedAttachments}
           toggleAddTaskAttachment={props.toggleAddTaskAttachment} toggleCrTaskAttachment={props.toggleCrTaskAttachment} 
           toggleChangeTaskAttachment={props.toggleChangeTaskAttachment} isChangeAttachment={props.isChangeAttachment} currentAttachment={props.currentAttachment}
           colors={props.colors} changeAttachment={props.changeAttachment} createTaskAttachment={props.createTaskAttachment} taskDetails={props.taskDetails}
-          deleteFixedAttachment={props.deleteFixedAttachment}
-          />}
+          deleteFixedAttachment={props.deleteFixedAttachment} />}
+          {
+            props.addWorkersStatus && <AddWorkers workers={props.workers} toggleAddWorkersStatus={props.toggleAddWorkersStatus} addWorkerToTask={props.addWorkerToTask} 
+            taskDetails={taskChangeDetails}
+            />
+          }
         </div> 
   )
 }

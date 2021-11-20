@@ -20,8 +20,8 @@ import {
   TOGGLE_CHANGE_ATTACHMENT,
   CHANGE_ATTACHMENT,
   CREATE_TASK_ATTACHMENT,
-  DELETE_FIXED_ATTTACHMENT,
   ADD_USER_TO_TASK,
+  TOGGLE_ADD_WORKERS_STATUS,
 } from './types';
 
 const initialState = {
@@ -186,12 +186,32 @@ const initialState = {
     boardId: null,
     title: ''
   },
-  workers:[
-    {id: 1, name: 'Mashxurbek'},
-    {id: 2, name: 'Abduvali'},
-    {id: 3, name: 'Temur'},
-    {id: 4, name: 'Baxodir'}
-  ]
+  workers: [{
+      id: 1,
+      name: 'Mashxurbek Muhammadjonov',
+      boards: [],
+      img: ''
+    },
+    {
+      id: 2,
+      name: 'Abduvali Abdurahmonov',
+      boards: [],
+      img: ''
+    },
+    {
+      id: 3,
+      name: 'Temur Malikov',
+      boards: [],
+      img: ''
+    },
+    {
+      id: 4,
+      name: 'Baxodir Kozimjonov',
+      boards: [],
+      img: ''
+    }
+  ],
+  addWorkersStatus: false
 }
 
 const getTime = () => new Date().getTime()
@@ -201,7 +221,7 @@ const createTask = (id, title) => ({
   title,
   description: '',
   bgImg: '',
-  asignedStaff: [],
+  assignedStaff: [],
   attachments: [],
   editMode: false,
   date: getTime()
@@ -421,9 +441,9 @@ const boardsReducer = (state = initialState, action) => {
                                         } : at)
                                       }
                                     }
-                                    case CREATE_TASK_ATTACHMENT:{
+                                    case CREATE_TASK_ATTACHMENT: {
 
-                                    const chosenColor = state.colors.find(c => c.name === action.color)
+                                      const chosenColor = state.colors.find(c => c.name === action.color)
                                       return {
                                         ...state,
                                         boards: state.boards.map(b => b.id === action.bId ? {
@@ -432,21 +452,78 @@ const boardsReducer = (state = initialState, action) => {
                                             ...t,
                                             attachments: [...t.attachments, {
                                               title: action.title,
-                                              color: {...chosenColor},
+                                              color: {
+                                                ...chosenColor
+                                              },
                                               id: t.attachments.length + 1,
-                                              }]
+                                            }]
                                           } : t)
                                         } : b),
-                                        fixedAttachments: [...state.fixedAttachments, {color: chosenColor.color, name: chosenColor.name, title: action.title, id: state.fixedAttachments.length + 1}]
-                                      }}
-                                      
-                                      // case DELETE_FIXED_ATTTACHMENT:
-                                      //   return {
-                                      //     ...state,
-                                      //     fixedAttachments: state.fixedAttachments.filter(at => at.id !== action.atId),
-                                      //     boards: state.boards.map(b => b.id === action.bId ? {...b, })
-                                      //   }
-                                      
+                                        fixedAttachments: [...state.fixedAttachments, {
+                                          color: chosenColor.color,
+                                          name: chosenColor.name,
+                                          title: action.title,
+                                          id: state.fixedAttachments.length + 1
+                                        }]
+                                      }
+                                    }
+                                    case TOGGLE_ADD_WORKERS_STATUS:
+                                      return {
+                                        ...state,
+                                        addWorkersStatus: action.isActive
+                                      }
+                                      case ADD_USER_TO_TASK: {
+                                        const foundWorker = state.workers.find(w => w.id === action.workerId)
+                                        if (action.isAdding) {
+                                          return {
+                                            ...state,
+                                            boards: state.boards.map(b => b.id === action.boardId ? {
+                                              ...b,
+                                              tasks: b.tasks.map(t => t.id === action.taskId ? {
+                                                ...t,
+                                                assignedStaff: (t.assignedStaff && [...t.assignedStaff, foundWorker]) || (!t.assignedStaff && [{
+                                                  name: foundWorker.name,
+                                                  id: foundWorker.id
+                                                }])
+                                              } : t)
+                                            } : b),
+                                            workers: state.workers.map(w => w.id === action.workerId ? {
+                                              ...w,
+                                              boards: w.boards.length > 0 ? w.boards.map(wb => wb.id === action.boardId ? {
+                                                ...wb,
+                                                tasks: [...wb.tasks, {
+                                                  id: action.taskId
+                                                }]
+                                              } : {
+                                                id: action.boardId,
+                                                tasks: [{
+                                                  id: action.taskId
+                                                }]
+                                              }) : [{
+                                                id: action.boardId,
+                                                tasks: [{
+                                                  id: action.taskId
+                                                }]
+                                              }]
+                                            } : w)
+                                          }
+                                        } else {
+                                          return {
+                                            ...state,
+                                            boards: state.boards.map(b => b.id === action.boardId ? {
+                                              ...b,
+                                              tasks: b.tasks.map(t => t.id === action.taskId ? {
+                                                ...t,
+                                                assignedStaff: t.assignedStaff.filter(as => as.id !== action.workerId)
+                                              } : t)
+                                            } : b),
+                                            workers: state.workers.map(w => w.id === action.workerId ? {
+                                              ...w,
+                                              boards: w.boards.filter(b => b.id !== action.boardId)
+                                            } : w)
+                                          }
+                                        }
+                                      }
                                       default:
                                         return state
   }

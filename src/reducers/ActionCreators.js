@@ -14,14 +14,14 @@ import {
   BOARD_MOVE_STATUS,
   BOARD_ITEMS_SORT_STATUS,
   BOARD_ITEMS_SORT,
-  ON_BOARD_DRAG_OVER,
   TOGGLE_ADD_TASK_ATACHMENT,
   TOGGLE_CREATE_TASK_ATACHMENT,
   TOGGLE_CHANGE_ATTACHMENT,
   CHANGE_ATTACHMENT,
-  TOGGLE_CREATE_ATTACHEMENT,
   CREATE_TASK_ATTACHMENT,
-  DELETE_FIXED_ATTTACHMENT
+  DELETE_FIXED_ATTTACHMENT,
+  ADD_USER_TO_TASK,
+  TOGGLE_ADD_WORKERS_STATUS
 } from './types';
 
 export const onBoardHeaderInputChange = (title, boardId) => ({
@@ -101,11 +101,6 @@ export const sortBoardItems = (boardId, sortType) => ({
   boardId,
   sortType
 })
-export const onBoardDragOver = (draggedBoardId, movingBoardId) => ({
-  type: ON_BOARD_DRAG_OVER,
-  draggedBoardId,
-  movingBoardId
-})
 export const toggleAddTaskAttachment = (isActive) => ({
   type: TOGGLE_ADD_TASK_ATACHMENT,
   isActive
@@ -116,12 +111,34 @@ export const toggleCrTaskAttachment = (isActive) => ({
 })
 export const toggleChangeTaskAttachment = (isActive, atachId) => ({
   type: TOGGLE_CHANGE_ATTACHMENT,
-  isActive, atachId
+  isActive,
+  atachId
 })
-export const changeAttachment =(atId, color, title) => ({
-  type: CHANGE_ATTACHMENT, atId, color, title
+export const changeAttachment = (atId, color, title) => ({
+  type: CHANGE_ATTACHMENT,
+  atId,
+  color,
+  title
 })
-export const createTaskAttachment =(bId, tId, color, title) => ({
-  type: CREATE_TASK_ATTACHMENT, tId, bId, color, title
+export const createTaskAttachment = (bId, tId, color, title) => ({
+  type: CREATE_TASK_ATTACHMENT,
+  tId,
+  bId,
+  color,
+  title
 })
-export const deleteFixedAttachment = (atId) => ({type:DELETE_FIXED_ATTTACHMENT, atId})
+export const addWorkerToTask = (boardId, taskId, workerId, isAdding) => ({
+  type: ADD_USER_TO_TASK,
+  boardId,
+  taskId,
+  workerId,
+  isAdding
+})
+export const toggleAddWorkersStatus = (isActive) => ({
+  type: TOGGLE_ADD_WORKERS_STATUS,
+  isActive
+})
+export const deleteFixedAttachment = (atId) => ({
+  type: DELETE_FIXED_ATTTACHMENT,
+  atId
+})

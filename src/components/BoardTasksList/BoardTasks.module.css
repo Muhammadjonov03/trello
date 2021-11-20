@@ -75,3 +75,11 @@
 .attachmentActive {
   animation: activeAttachment 0.3s ease-in-out forwards;
 }
+
+.taskWorkers {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  max-width: 260px;
+}

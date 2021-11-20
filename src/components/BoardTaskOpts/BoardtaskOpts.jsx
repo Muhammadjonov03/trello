@@ -1,9 +1,12 @@
-import React from 'react'
-import style from './TaskChange.module.css'
-function BoardTaskOpts(props) {
+import React from 'react';
+import style from './BoardTaskOpts.module.css';
+const BoardtaskOpts = (props) => {
   const onAttachmentsClicked = () => {
     props.toggleAddTaskAttachment(true)
-  }
+  };
+  const onAddChangeUsersClicked = () => {
+    props.toggleAddWorkersStatus(true)
+  };
   return (
     <div className={style.boardTaskOptions}>
             <button className={style.boardTaskOption}>
@@ -12,7 +15,7 @@ function BoardTaskOpts(props) {
             <button className={style.boardTaskOption} onClick={onAttachmentsClicked}>
               Change attachments
             </button>
-            <button className={style.boardTaskOption}>
+            <button className={style.boardTaskOption} onClick={onAddChangeUsersClicked}>
                 Change members
             </button>
             <button className={style.boardTaskOption}>
@@ -21,9 +24,8 @@ function BoardTaskOpts(props) {
             <button className={style.boardTaskOption}>
                 Move to
             </button>
-
     </div>
   )
-}
+};
 
-export default BoardTaskOpts
+export default BoardtaskOpts;
