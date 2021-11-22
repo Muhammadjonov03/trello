@@ -5,7 +5,7 @@ import { onBoardHeaderInputChange, setTaskChangeActive, setTaskTitle,
         setNewTaskstatus, addNewTask, addBoardStatusChange,
         setTaskChangeDetails, addBoard, toggleCopyBoardStatus,
         copyBoard, moveBoard, toggleBoardMoveStatus, toggleBoardSortItemsStatus,
-        sortBoardItems, moveBoardOnDrag} from './../../reducers/ActionCreators';
+        sortBoardItems, moveBoardOnDrag, toggleBoardPlaceholder, moveTaskOnDrag, toggleBoardAcceptStatus, moveTaskOnHovering} from './../../reducers/ActionCreators';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,7 +14,9 @@ const mapStateToProps = (state) => {
     addBoardStatus: state.boards.addBoardStatus,
     copyBoardStatus: state.boards.copyBoardStatus,
     isBoardMoving: state.boards.isBoardMoving,
-    itemsSorting: state.boards.areBoardItemsSorting
+    itemsSorting: state.boards.areBoardItemsSorting,
+    boardPlaceholderActive: state.boards.boardPlaceholderActive,
+    willBoardAccept: state.boards.willBoardAccept
   }
 }
 
@@ -22,4 +24,4 @@ export default compose(
   connect(mapStateToProps, {onBoardHeaderInputChange, setTaskChangeActive, setTaskTitle,
   setNewTaskstatus, addNewTask, addBoardStatusChange, setTaskChangeDetails, addBoard,
   toggleCopyBoardStatus, copyBoard, moveBoard, toggleBoardMoveStatus, toggleBoardSortItemsStatus,
-  sortBoardItems, moveBoardOnDrag}))(Boards)
+  sortBoardItems, moveBoardOnDrag, toggleBoardPlaceholder, moveTaskOnDrag, toggleBoardAcceptStatus, moveTaskOnHovering}))(Boards)

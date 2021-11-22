@@ -9,9 +9,35 @@ props.setTaskChangeDetails(parent.left, parent.top, task.id, props.boardId, task
 }
 const [attachmentActive, setAttachmentActive] = useState(false)
 const onAttClick = () => setAttachmentActive(!attachmentActive)
+const dragStart = (e) => {
+  e.stopPropagation()
+  props.toggleBoardPlaceholder(false)
+  props.setDraggedTask(task)
+  props.setPrevBoard(props.boardId)
+  setTimeout(() => {
+    e.target.classList.add(style.hide)
+  }, 0);
+  e.currentTarget.classList.add(style.dragged)
+}
+const dragOver = e => {
+  e.preventDefault()
+  e.currentTarget.classList.add(style.hovered)
+} 
+const dragLeave = e => {
+  e.currentTarget.classList.remove(style.hovered)
+} 
+const dragEnd = (e) => {
+  e.currentTarget.className = style.boardTask
+  props.toggleBoardAcceptStatus(true)
+}
+const dragDrop = (e) => {
+  e.stopPropagation()
+  props.toggleBoardAcceptStatus(false)
+  props.moveTaskOnHovering(props.prevBoard, props.boardId,  props.draggedTask, task);
+}
 
 return (
-<li className={style.boardTask}>
+<li className={style.boardTask} draggable onDragStart={(e) => dragStart(e)} onDragOver={dragOver} onDragLeave={dragLeave} onDragEnd={dragEnd} onDrop={dragDrop}>
   <div className={style.attachmentsWrap}>
     {task.attachments && task.attachments.map(attachment =><span className={style.attachment + ' ' +
       (attachmentActive && style.attachmentActive)} style={{backgroundColor: attachment.color.color}}

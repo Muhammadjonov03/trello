@@ -83,3 +83,13 @@
   flex-wrap: wrap;
   max-width: 260px;
 }
+
+.boardTask.hovered {
+  background: #bababa;
+}
+.boardTask.dragged{
+  background: #f4f5f7;
+}
+.boardTask.hide{
+background: #42526e;
+}

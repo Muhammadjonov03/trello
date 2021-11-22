@@ -22,7 +22,11 @@ import {
   DELETE_FIXED_ATTTACHMENT,
   ADD_USER_TO_TASK,
   TOGGLE_ADD_WORKERS_STATUS,
-  MOVE_BOARD_ON_DRAG
+  MOVE_BOARD_ON_DRAG,
+  TOGGLE_BAORD_PLACEHOLDER,
+  MOVE_TASK_ON_DRAG,
+  TOGGLE_BOARD_ACCEPT_STATUS,
+  MOVE_TASK_ON_HOVERING
 } from './types';
 
 export const onBoardHeaderInputChange = (title, boardId) => ({
@@ -143,8 +147,33 @@ export const deleteFixedAttachment = (atId) => ({
   type: DELETE_FIXED_ATTTACHMENT,
   atId
 })
+export const toggleBoardPlaceholder = (isActive) => ({
+  type: TOGGLE_BAORD_PLACEHOLDER,
+  isActive
+})
+
 export const moveBoardOnDrag = (draggedBoard, dropArea) => ({
   type: MOVE_BOARD_ON_DRAG,
   draggedBoard,
   dropArea
+})
+
+export const moveTaskOnDrag = (prevBoardId, newBoard, draggedTask) => ({
+  type: MOVE_TASK_ON_DRAG,
+  newBoard,
+  draggedTask,
+  prevBoardId
+})
+
+export const toggleBoardAcceptStatus = (isActive) => ({
+  type:TOGGLE_BOARD_ACCEPT_STATUS,
+  isActive
+})
+
+export const moveTaskOnHovering = (prevBoardId, newBoardId, draggedTask, hoveredTask) => ({
+  type: MOVE_TASK_ON_HOVERING,
+  prevBoardId,
+  newBoardId,
+  draggedTask,
+  hoveredTask
 })

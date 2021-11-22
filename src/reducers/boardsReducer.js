@@ -23,6 +23,10 @@ import {
   ADD_USER_TO_TASK,
   TOGGLE_ADD_WORKERS_STATUS,
   MOVE_BOARD_ON_DRAG,
+  TOGGLE_BAORD_PLACEHOLDER,
+  MOVE_TASK_ON_DRAG,
+  TOGGLE_BOARD_ACCEPT_STATUS,
+  MOVE_TASK_ON_HOVERING,
 } from './types';
 
 const initialState = {
@@ -212,7 +216,9 @@ const initialState = {
       img: ''
     }
   ],
-  addWorkersStatus: false
+  addWorkersStatus: false,
+  boardPlaceholderActive: false,
+  willBoardAccept: true,
 }
 
 const getTime = () => new Date().getTime()
@@ -525,30 +531,67 @@ const boardsReducer = (state = initialState, action) => {
                                           }
                                         }
                                       }
-                                      case MOVE_BOARD_ON_DRAG: {
-                                        const movingBoard = state.boards.find(b => b.id === action.draggedBoard)
-                                        const droppingArea = state.boards.find(b => b.id === action.dropArea)
-                                        const reorderedBoards = state.boards.map(b => {
-                                          if(b.id === movingBoard.id){
-                                            return {
-                                              ...b,
-                                              order: droppingArea.order
+                                      case TOGGLE_BAORD_PLACEHOLDER:
+                                        return {
+                                          ...state,
+                                          boardPlaceholderActive: action.isActive
+                                        }
+                                        case MOVE_BOARD_ON_DRAG: {
+                                          const movingBoard = state.boards.find(b => b.id === action.draggedBoard)
+                                          const droppingArea = state.boards.find(b => b.id === action.dropArea)
+                                          const reorderedBoards = state.boards.map(b => {
+                                            if (b.id === movingBoard.id) {
+                                              return {
+                                                ...b,
+                                                order: droppingArea.order
+                                              }
+                                            } else if (b.id === droppingArea.id) {
+                                              return {
+                                                ...b,
+                                                order: movingBoard.order
+                                              }
                                             }
-                                          } else if (b.id === droppingArea.id) {
-                                            return {
+                                            return b
+                                          })
+                                          return {
+                                            ...state,
+                                            boards: reorderedBoards.sort((a, b) => a.order > b.order ? 1 : -1)
+                                          }
+                                        }
+                                        case MOVE_TASK_ON_DRAG: {
+                                          return {
+                                            ...state,
+                                            boards: state.boards.map(b => b.id === action.newBoard.id ? {
                                               ...b,
-                                              order: movingBoard.order
+                                              tasks: b.id === action.prevBoardId ? b.tasks : [...b.tasks, {
+                                                ...action.draggedTask,
+                                                id: b.tasks.length + 1 + 'a'
+                                              }]
+                                            } : b.id === action.prevBoardId ? {
+                                              ...b,
+                                              tasks: b.tasks.filter(t => t.id !== action.draggedTask.id)
+                                            } : b)
+                                          }
+                                        }
+                                        case TOGGLE_BOARD_ACCEPT_STATUS:
+                                          return {
+                                            ...state,
+                                            willBoardAccept: action.isActive
+                                          }
+                                          case MOVE_TASK_ON_HOVERING: {
+                                            const prevBoard = state.boards.find(b => b.id === action.prevBoardId)
+                                            const draggedTaskIndex = prevBoard.tasks.indexOf(action.draggedTask)
+                                            const newBoard = state.boards.find(b => b.id === action.newBoardId)
+                                            const hoveredTaskIndex = newBoard.tasks.indexOf(action.hoveredTask) 
+                                            prevBoard.tasks.splice(draggedTaskIndex, 1)
+                                            newBoard.tasks.splice(hoveredTaskIndex + 1, 0,  action.draggedTask)
+                                            return {
+                                              ...state,
+                                              boards: state.boards.map(b => b.id === action.newBoardId ? {...newBoard} : b.id === action.prevBoardId ? {...prevBoard} : b)
                                             }
                                           }
-                                          return b
-                                        })
-                                        return {
-                                          ...state, 
-                                          boards: reorderedBoards.sort((a,b) => a.order > b.order ? 1 : -1)
-                                        }
-                                      }
-                                      default:
-                                        return state
+                                          default:
+                                            return state
   }
 }
 

@@ -16,6 +16,13 @@ const BoardTasksList = (props) => {
           key={task.id}
           setTaskTitle={props.setTaskTitle}
           setTaskChangeDetails={props.setTaskChangeDetails}
+          toggleBoardPlaceholder={props.toggleBoardPlaceholder}
+          setPrevBoard={props.setPrevBoard}
+          setDraggedTask={props.setDraggedTask}
+          toggleBoardAcceptStatus={props.toggleBoardAcceptStatus}
+          moveTaskOnHovering={props.moveTaskOnHovering}
+          draggedTask={props.draggedTask}
+          prevBoard={props.prevBoard}
           />
         ))
       }
